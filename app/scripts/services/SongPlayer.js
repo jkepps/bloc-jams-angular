@@ -22,6 +22,7 @@
 		var playSong = function(song) {
 			currentBuzzObject.play();
 			song.playing = true;
+			SongPlayer.muted = false;
 		}
 		
 		/**
@@ -48,6 +49,8 @@
 				formats: ['mp3'],
 				preload: true
 			});
+
+			currentBuzzObject.setVolume(SongPlayer.volume);
 
 			currentBuzzObject.bind('timeupdate', function() {
 				$rootScope.$apply(function() {
@@ -84,6 +87,12 @@
 		* @type {Number}
 		*/
 		SongPlayer.volume = 80;
+
+		/**
+		* @desc tracks if the player is muted
+		* @type {Boolean}
+		*/
+		SongPlayer.muted = false;
 
 		/**
 		* @function SongPlayer.play
@@ -166,8 +175,25 @@
 		SongPlayer.setVolume = function(volume) {
 			if (currentBuzzObject) {
 				currentBuzzObject.setVolume(volume);
+				SongPlayer.volume = volume;
 			}
 		};
+
+		/**
+		* @function toggleMute
+		*	@desc mutes or unmutes currently playing song
+		*/
+		SongPlayer.toggleMute = function() {
+			if (currentBuzzObject) {
+				if (!currentBuzzObject.isMuted()) {
+					currentBuzzObject.mute();
+					SongPlayer.muted = true;
+				} else {
+					currentBuzzObject.unmute();
+					SongPlayer.muted = false;
+				}
+			}
+		}
 		
 		return SongPlayer;
 	}

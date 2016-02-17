@@ -1,12 +1,12 @@
 <section class="player-bar" ng-controller="PlayerBarCtrl as playerBar">
 	<div class="container">
 		<div class="control-group main-controls">
-			<a class="previous">
+			<a class="icon previous">
 				<span class="ion-skip-backward"
 							ng-click="playerBar.songPlayer.previous()">
 				</span>
 			</a>
-			<a class="play-pause">
+			<a class="icon play-pause">
 				<span class="ion-play" 
 							ng-show="!playerBar.songPlayer.currentSong.playing" 
 							ng-click="playerBar.songPlayer.play()">
@@ -16,7 +16,7 @@
 							ng-click="playerBar.songPlayer.pause()">
 				</span>
 			</a>
-			<a class="next">
+			<a class="icon next">
 				<span class="ion-skip-forward" ng-click="playerBar.songPlayer.next()">
 				</span>
 			</a>
@@ -34,7 +34,12 @@
 			</div>
 		</div>
 		<div class="control-group volume">
-			<span class="icon ion-volume-high"></span>
+			<span class="icon ion-volume-high"
+						ng-show="!playerBar.songPlayer.muted" 
+						ng-click="playerBar.songPlayer.toggleMute()"></span>
+			<span class="icon ion-volume-mute"
+						ng-show="playerBar.songPlayer.muted"
+						ng-click="playerBar.songPlayer.toggleMute()"></span>
 			<seek-bar value="{{ playerBar.songPlayer.volume }}" 
 								max=100
 								on-change="playerBar.songPlayer.setVolume(value)"></seek-bar>
