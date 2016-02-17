@@ -57,6 +57,10 @@
 					SongPlayer.currentTime = currentBuzzObject.getTime();
 				});
 			});
+
+			currentBuzzObject.bind('ended', function(event) {
+				SongPlayer.next();
+			});
 			
 			SongPlayer.currentSong = song;
 		};
@@ -181,7 +185,7 @@
 
 		/**
 		* @function toggleMute
-		*	@desc mutes or unmutes currently playing song
+		* @desc mutes or unmutes currently playing song
 		*/
 		SongPlayer.toggleMute = function() {
 			if (currentBuzzObject) {
