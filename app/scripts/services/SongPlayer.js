@@ -181,7 +181,7 @@
 
 		/**
 		* @function toggleMute
-		*	@desc mutes or unmutes currently playing song
+		* @desc mutes or unmutes currently playing song
 		*/
 		SongPlayer.toggleMute = function() {
 			if (currentBuzzObject) {
