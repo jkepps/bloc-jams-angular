@@ -143,6 +143,12 @@
 	font-size: 1.1rem;
 	display: inline-block;
 	vertical-align: middle;
+	cursor: pointer;
+}
+
+.player-bar .main-controls .icon:hover,
+.player-bar .volume .icon:hover {
+	opacity: .75;
 }
 
 .player-bar .volume .seek-bar {
