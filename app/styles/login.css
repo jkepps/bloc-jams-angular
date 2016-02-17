@@ -1,0 +1,26 @@
+.button {
+	position: relative;
+	display: block;
+	width: 40%;
+	margin: 2rem auto;
+	padding: 4rem auto;
+	border-radius: 10px;
+	border: none;
+	color: white;
+}
+
+.button-google {
+	background-color: red;
+}
+
+.button-soundcloud {
+	background-color: orange;
+}
+
+.button-facebook {
+	background-color: blue;
+}
+
+.button-twitter {
+	background-color: green;
+}

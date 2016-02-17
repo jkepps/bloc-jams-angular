@@ -9,17 +9,21 @@
 		<link rel="stylesheet" type="text/css" href="/styles/normalize.css">
 		<link rel="stylesheet" type="text/css" href="/styles/main.css">
 		<link rel="stylesheet" type="text/css" href="/styles/landing.css">
+		<link rel="stylesheet" type="text/css" href="/styles/login.css">
 		<link rel="stylesheet" type="text/css" href="/styles/collection.css">
 		<link rel="stylesheet" type="text/css" href="/styles/album.css">
 		<link rel="stylesheet" type="text/css" href="/styles/player_bar.css">
 	</head>
 	<body>
-		<nav class="navbar">
+		<nav class="navbar" ng-controller="NavBarCtrl as navBar">
 			<a ui-sref="landing" class="logo">
 				<img src="/assets/images/bloc_jams_logo.png" alt="bloc jams logo" class="logo">
 			</a>
 			<div class="links-container">
 				<a ui-sref="collection" class="navbar-link">collection</a>
+				<a ui-sref="login" class="navbar-link" ng-show="!isAuthenticated()">Login</a>
+				<a ui-sref="profile" class="navbar-link" ng-show="isAuthenticated()">Profile</a>
+				<a ui-sref="logout" class="navbar-link" ng-show="isAuthenticated()">Logout</a>
 			</div>
 		</nav>
 		
@@ -29,10 +33,15 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.10/buzz.min.js"></script>
+		<script src="//cdn.jsdelivr.net/satellizer/0.13.4/satellizer.min.js"></script>
 		<script src="/scripts/app.js"></script>
 		<script src="/scripts/services/Fixtures.js"></script>
 		<script src="/scripts/services/SongPlayer.js"></script>
 		<script src="/scripts/controllers/LandingCtrl.js"></script>
+		<script src="/scripts/controllers/NavBarCtrl.js"></script>
+		<script src="/scripts/controllers/LoginCtrl.js"></script>
+		<script src="/scripts/controllers/LogoutCtrl.js"></script>
+		<script src="/scripts/controllers/ProfileCtrl.js"></script>
 		<script src="/scripts/controllers/CollectionCtrl.js"></script>
 		<script src="/scripts/controllers/AlbumCtrl.js"></script>
 		<script src="/scripts/controllers/PlayerBarCtrl.js"></script>
