@@ -1,23 +1,15 @@
 (function() {
 	function timecode() {
 		return function(seconds) {
-			var seconds = Number.parseFloat(seconds);
+			var output;
 
-			if (Number.isNaN(seconds)) {
-				return '-:--';
+			if (seconds >= 3600) {
+				output = buzz.toTimer(seconds, true);
+			} else if (seconds >= 600) {
+				output = buzz.toTimer(seconds);
+			} else {
+				output = buzz.toTimer(seconds).slice(1);
 			}
-			
-			var wholeSeconds = Math.floor(seconds);
-			var minutes = Math.floor(wholeSeconds / 60);
-			var remainingSeconds = wholeSeconds % 60;
-
-			var output = minutes + ':';
-
-			if (remainingSeconds < 10) {
-				output += '0';
-			}
-
-			output += remainingSeconds;
 
 			return output;
 		}
